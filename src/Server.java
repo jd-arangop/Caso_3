@@ -36,6 +36,8 @@ public class Server {
         ServerSocket serverSocket= null;
         boolean exceute = true;
         int threadsNumber = 0;
+        PrintWriter writer = null;
+        BufferedReader reader = null;
 
         System.out.println("Inicio del servidor prinicipal");
 
@@ -54,8 +56,8 @@ public class Server {
 
             serverHandler.start();
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            writer = new PrintWriter(socket.getOutputStream(), true);
 
             BigInteger[] valores = generary();
             BigInteger x = valores[1]; 
@@ -64,5 +66,7 @@ public class Server {
         }
 
         serverSocket.close();
+        writer.close();
+        reader.close();
     }
 }
