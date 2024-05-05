@@ -51,6 +51,7 @@ public class Client {
             writer.println(valores[0].toString());
             BigInteger yserver = new BigInteger(reader.readLine());
             BigInteger z = diffieHellman.calcularz(yserver, x);
+            System.out.println(z);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
