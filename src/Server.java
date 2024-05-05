@@ -1,4 +1,7 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -30,14 +33,6 @@ public class Server {
     public static void main(String[] args) throws IOException {
         DiffieHellman diffieHellman = new DiffieHellman();
 
-        BigInteger[] valores = generary();
-        BigInteger x = valores[1]; 
-
-        BigInteger[] y = Client.generary();
-        BigInteger yclient = y[0];
-
-        BigInteger z = diffieHellman.calcularz(yclient, x);
-
         ServerSocket serverSocket= null;
         boolean exceute = true;
         int threadsNumber = 0;
@@ -58,6 +53,14 @@ public class Server {
             threadsNumber++;
 
             serverHandler.start();
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+
+            BigInteger[] valores = generary();
+            BigInteger x = valores[1]; 
+            BigInteger yclient = new BigInteger(reader.readLine());
+            BigInteger z = diffieHellman.calcularz(yclient, x);
         }
 
         serverSocket.close();

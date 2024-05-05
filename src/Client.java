@@ -32,14 +32,6 @@ public class Client {
 
     public static void main(String args[]) throws IOException{
         DiffieHellman diffieHellman = new DiffieHellman();
-
-        BigInteger[] valores = generary();
-        BigInteger x = valores[1]; 
-
-        BigInteger[] y = Server.generary();
-        BigInteger yserver = y[0];
-        
-        BigInteger z = diffieHellman.calcularz(yserver, x);
         
         Socket socket = null;
         PrintWriter writer = null;
@@ -54,6 +46,11 @@ public class Client {
                     socket.getInputStream()
                 )
             );
+            BigInteger[] valores = generary();
+            BigInteger x = valores[1]; 
+            writer.println(valores[0].toString());
+            BigInteger yserver = new BigInteger(reader.readLine());
+            BigInteger z = diffieHellman.calcularz(yserver, x);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
