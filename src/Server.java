@@ -1,14 +1,28 @@
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Random;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 
-public class Server {
+public class Server extends Thread{
     public static final int PORT = 3400;
+
+    //Valores P y G generados anteriormente
+    private static final BigInteger P = new BigInteger("D49A7AD853F484570E1811CC99D285D3DB6BEA6EF8ECF6D245058590D8EAA7861A512AD05B5416033AF237970E32D4ACB3B271B1009D96F4237C35781A54F7EFD66F7C06A125C21023A270213908836132C9D41151634E45C957018A233A5919C5BAFD9EBE3351F84E5F5623B3C84AA92004399E8137AC8D0D2F2A7C9A38BB57", 16);
+    private static final BigInteger G = new BigInteger("2");
+
+    //Llaves Privadas y Publicas  generadas anteriormente
+    private static PrivateKey privateKey;
+    public static PublicKey publicKey;
+
+    ServerSocket serverSocket= null;
+    boolean exceute = true;
+    int threadsNumber = 0;
 
     public static BigInteger[] generary(){
         DiffieHellman diffieHellman = new DiffieHellman();
@@ -30,15 +44,11 @@ public class Server {
         return valores;
     }
     
-    public static void main(String[] args) throws IOException {
-        DiffieHellman diffieHellman = new DiffieHellman();
+    public static PublicKey getPublicKey(){
+        return publicKey;
+    }
 
-        ServerSocket serverSocket= null;
-        boolean exceute = true;
-        int threadsNumber = 0;
-        PrintWriter writer = null;
-        BufferedReader reader = null;
-
+    public Server() throws IOException {
         System.out.println("Inicio del servidor prinicipal");
 
         try {
@@ -48,25 +58,40 @@ public class Server {
             System.exit(-1);
         }
 
-        while (exceute) {
-            Socket socket = serverSocket.accept();
+        ServerHandler.setGP(G, P);
 
-            ServerHandler serverHandler = new ServerHandler(socket, threadsNumber);
-            threadsNumber++;
+        try {
+            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+            keyPairGenerator.initialize(1024);
+            KeyPair keyPair = keyPairGenerator.generateKeyPair();
 
-            serverHandler.start();
+            privateKey = keyPair.getPrivate();
+            publicKey = keyPair.getPublic();
 
-            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            writer = new PrintWriter(socket.getOutputStream(), true);
+            System.out.println(privateKey);
+            System.out.println(Server.getPublicKey());
 
-            BigInteger[] valores = generary();
-            BigInteger x = valores[1]; 
-            BigInteger yclient = new BigInteger(reader.readLine());
-            BigInteger z = diffieHellman.calcularz(yclient, x);
+            ServerHandler.setKeys(privateKey, publicKey);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
-        serverSocket.close();
-        writer.close();
-        reader.close();
+    @Override
+    public void run() {
+        
+        while (exceute) {
+            Socket socket;
+            try {
+                socket = serverSocket.accept();
+    
+                ServerHandler serverHandler = new ServerHandler(socket, threadsNumber);
+                threadsNumber++;
+
+                serverHandler.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

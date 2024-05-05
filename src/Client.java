@@ -6,13 +6,18 @@ import java.math.BigInteger;
 import java.net.Socket;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
 import java.security.SignatureException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Random;
 
-public class Client {
+public class Client extends Thread{
     public static final int PUERTO = 3400;
     public static final String SERVIDOR = "localhost";
+
+    public static PublicKey publicKey;
+
+    private int id;
 
     public static BigInteger[] generary(){
         DiffieHellman diffieHellman = new DiffieHellman();
@@ -34,9 +39,12 @@ public class Client {
         return valores;
     }
 
-    public static void main(String args[]) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, SignatureException{
-        DiffieHellman diffieHellman = new DiffieHellman();
-        
+    public Client(int pId) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, SignatureException{
+        id = pId;
+    }
+ 
+    @Override
+    public void run() {
         Socket socket = null;
         PrintWriter writer = null;
         BufferedReader reader = null;
@@ -50,27 +58,20 @@ public class Client {
                     socket.getInputStream()
                 )
             );
-            BigInteger[] valores = generary();
-            BigInteger x = valores[1]; 
-            writer.println(valores[0].toString());
-            BigInteger yserver = new BigInteger(reader.readLine());
-            BigInteger z = diffieHellman.calcularz(yserver, x);
-        } catch (IOException e) {
+            BufferedReader stdIn = new BufferedReader(new InputStreamReader(
+                System.in
+            )
+            );
+        
+            ClientProtocol.process(id, stdIn, reader, writer, publicKey);
+
+            writer.close();
+            reader.close();
+            socket.close();
+            stdIn.close();
+        } catch (Exception e) {
             e.printStackTrace();
             System.exit(-1);
         }
-
-        BufferedReader stdIn = new BufferedReader(new InputStreamReader(
-                System.in
-            )
-        );
-
-        ClientProtocol.process(stdIn, reader, writer);
-
-        writer.close();
-        reader.close();
-        socket.close();
-        stdIn.close();
     }
-    
 }
