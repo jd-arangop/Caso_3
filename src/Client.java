@@ -4,6 +4,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.net.Socket;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SignatureException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.Random;
 
 public class Client {
@@ -30,7 +34,7 @@ public class Client {
         return valores;
     }
 
-    public static void main(String args[]) throws IOException{
+    public static void main(String args[]) throws IOException, InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, SignatureException{
         DiffieHellman diffieHellman = new DiffieHellman();
         
         Socket socket = null;
