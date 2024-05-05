@@ -63,7 +63,6 @@ public class Server {
             BigInteger x = valores[1]; 
             BigInteger yclient = new BigInteger(reader.readLine());
             BigInteger z = diffieHellman.calcularz(yclient, x);
-            System.out.println(z);
         }
 
         serverSocket.close();
