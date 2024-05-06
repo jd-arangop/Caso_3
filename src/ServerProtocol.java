@@ -60,10 +60,15 @@ public class ServerProtocol {
                         BigInteger reto = new BigInteger(retoString);
 
                         //Firma del reto
+                        long iniciof = System.nanoTime();
                         Signature signature = Signature.getInstance("SHA256withRSA");
                         signature.initSign(privateKey);
                         signature.update(reto.toByteArray());
                         byte[] sign =  signature.sign();
+                        long finf = System.nanoTime();
+                        long tiempoff = finf - iniciof;
+                        double tiempof = tiempoff/1e9;
+                        System.out.println("Cliente " + id + ": Generar firma: " + tiempof);
 
                         //Envia la firma al cliente
                         outputLine = new String(Base64.getEncoder().encode(sign));
@@ -193,13 +198,23 @@ public class ServerProtocol {
                     byte[] hmacBytes = Base64.getDecoder().decode(hmac);
 
                     //Desencrpitar la consulta con AES
+                    long inicioc = System.nanoTime();
                     byte[] decryptedConsult = cipher.doFinal(encryptedConsultBytes);
                     String consult = new String(decryptedConsult);
+                    long finc = System.nanoTime();
+                    long tiempocc = finc - inicioc;
+                    double tiempoc = tiempocc/1e9;
+                    System.out.println("Cliente " + id + ": Descifrar consulta: " + tiempoc);
 
                     //Verificar el HMAC
+                    long iniciohm = System.nanoTime();
                     Mac mac = Mac.getInstance("HmacSHA256");
                     mac.init(new SecretKeySpec(K_AB2, "HmacSHA256"));
                     byte[] calculatedHmac = mac.doFinal(consult.getBytes());
+                    long finhm = System.nanoTime();
+                    long tiempohm = finhm - iniciohm;
+                    double tiempoh = tiempohm/1e9;
+                    System.out.println("Cliente " + id + ": Verificar HMAC: " + tiempoh);
 
                     if(MessageDigest.isEqual(hmacBytes, calculatedHmac)){
 
