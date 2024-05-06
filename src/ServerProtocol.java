@@ -46,10 +46,7 @@ public class ServerProtocol {
                 System.out.println("Delegado " + id + ": El cliente cancelo la conexión");
                 state = 404;
                 break;
-            }
-
-            System.out.println("Delegado " + id + ": Entrada a procesar:");
-            System.out.println(inputLine);
+            };
 
             switch (state) {
                 case 0:
@@ -68,7 +65,7 @@ public class ServerProtocol {
                         long finf = System.nanoTime();
                         long tiempoff = finf - iniciof;
                         double tiempof = tiempoff/1e9;
-                        System.out.println("Cliente " + id + ": Generar firma: " + tiempof + "SEGUNDOS");
+                        System.out.println("Delegado " + id + ": Generar firma: " + tiempof + "  SEGUNDOS");
 
                         //Envia la firma al cliente
                         outputLine = new String(Base64.getEncoder().encode(sign));
@@ -81,10 +78,8 @@ public class ServerProtocol {
             
                 case 1:
                     if (inputLine.equalsIgnoreCase(OK)){
-                        System.out.println("Delegado " + id + ": Generando llave privada x");
                         x = new BigInteger(1024, secureRandom);
                         while (P.compareTo(x) <= 0) {
-                            System.out.println("Delegado " + id + ": x es mas pequeño que P, volviendo a generar");
                             x = new BigInteger(1024, secureRandom);
                         }
 
@@ -182,8 +177,6 @@ public class ServerProtocol {
                 break;
 
                 case 4:
-                    System.out.println("Entra a caso 4");
-
                     cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
                     ivSpec = new IvParameterSpec(iv);
                     keySpec = new SecretKeySpec(K_AB1, "AES");
@@ -204,7 +197,7 @@ public class ServerProtocol {
                     long finc = System.nanoTime();
                     long tiempocc = finc - inicioc;
                     double tiempoc = tiempocc/1e9;
-                    System.out.println("Cliente " + id + ": Descifrar consulta: " + tiempoc + "SEGUNDOS");
+                    System.out.println("Delegado  " + id + ": Descifrar consulta: " + tiempoc + "SEGUNDOS");
 
                     //Verificar el HMAC
                     long iniciohm = System.nanoTime();
@@ -214,7 +207,7 @@ public class ServerProtocol {
                     long finhm = System.nanoTime();
                     long tiempohm = finhm - iniciohm;
                     double tiempoh = tiempohm/1e9;
-                    System.out.println("Cliente " + id + ": Verificar HMAC: " + tiempoh + "SEGUNDOS");
+                    System.out.println("Delegado " + id + ": Verificar HMAC: " + tiempoh + " SEGUNDOS");
 
                     if(MessageDigest.isEqual(hmacBytes, calculatedHmac)){
 
@@ -225,7 +218,6 @@ public class ServerProtocol {
 
                         BigInteger intResponse = new BigInteger(consult).subtract(BigInteger.ONE);
                         String response = intResponse.toString();
-                        System.out.println("Respuesta " + response);
 
                         //Cifra la respuesta con AES
                         byte[] encryptedResponseBytes = cipher.doFinal(response.getBytes());

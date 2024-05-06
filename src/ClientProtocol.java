@@ -62,7 +62,7 @@ public class ClientProtocol {
             long finv = System.nanoTime();
             long tiempov = finv - iniciov;
             double tiempovs = tiempov/1e9;
-            System.out.println("Cliente " + id + ": Verificacion de firma: " + tiempovs + "SEGUNDOS");
+            System.out.println("Cliente " + id + ": Verificacion de firma: " + tiempovs + " SEGUNDOS");
             if (verificado) {
                 pOut.println("OK");
             } else {
@@ -73,10 +73,8 @@ public class ClientProtocol {
             }
 
             //Generar llave privada y
-            System.out.println("Cliente " + id +": Generando llave privada y");
             BigInteger y = new BigInteger(1024, secureRandom);
             while (P.compareTo(y) <= 0) {
-                System.out.println("Cliente " + id +": y es mas pequeña que P, volviendo a generar");
                 y = new BigInteger(1024, secureRandom);
             }
 
@@ -86,7 +84,7 @@ public class ClientProtocol {
             long fingy = System.nanoTime();
             long tiempog = fingy - iniciogy;
             double tiempogy = tiempog/1e9;
-            System.out.println("Cliente " + id + ": Calcular Gy: " + tiempogy + "SEGUNDOS");
+            System.out.println("Cliente " + id + ": Calcular Gy: " + tiempogy + " SEGUNDOS");
             //Envia Gy
             pOut.println(Gy);
 
@@ -108,7 +106,7 @@ public class ClientProtocol {
             boolean canContinue = pIn.readLine().equalsIgnoreCase("CONTINUAR");
 
             if (!canContinue) {
-                System.out.println("12. Cliente " + id + ": Inconsisntencia en la información. Terminando conexión");
+                System.out.println("Cliente " + id + ": Inconsisntencia en la información. Terminando conexión");
                 // Finalizar ejecución si la verificación falla
                 execute = false;
                 break;
@@ -139,11 +137,8 @@ public class ClientProtocol {
             String response = pIn.readLine();
 
             if (response.equalsIgnoreCase("OK")){
-                System.out.println("Inicia consulta");
-
                 // Genera la consulta
                 String consult = new BigInteger(1024, secureRandom).toString();
-                System.out.println("Consulta " + consult);
 
                 //Cifra la consulta con AES
                 long inicioc = System.nanoTime();
@@ -152,7 +147,7 @@ public class ClientProtocol {
                 long finc = System.nanoTime();
                 long tiempocc = finc - inicioc;
                 double tiempoc = tiempocc/1e9;
-                System.out.println("Cliente " + id + ": Cifrar consulta: " + tiempoc + "SEGUNDOS");
+                System.out.println("Cliente " + id + ": Cifrar consulta: " + tiempoc + " SEGUNDOS");
                 //Calcular HMAC de la consulta
                 long iniciohm = System.nanoTime();
                 Mac mac = Mac.getInstance("HmacSHA256");
@@ -161,7 +156,7 @@ public class ClientProtocol {
                 long finhm = System.nanoTime();
                 long tiempoh = finhm - iniciohm;
                 double tiempohm = tiempoh/1e9;
-                System.out.println("Cliente " + id + ": Generar HMAC: " + tiempohm + "SEGUNDOS");
+                System.out.println("Cliente " + id + ": Generar HMAC: " + tiempohm + " SEGUNDOS");
 
                 //Enviar la consulta
                 pOut.println(encryptedConsult);

@@ -1,0 +1,162 @@
+Por favor, ingresa la cantidad de delegados deseados: 16
+Inicio del servidor prinicipal
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Inicio de un nuevo delegado: 14
+Inicio de un nuevo delegado: 2
+Inicio de un nuevo delegado: 0
+Inicio de un nuevo delegado: 10
+Inicio de un nuevo delegado: 8
+Inicio de un nuevo delegado: 7
+Inicio de un nuevo delegado: 4
+Inicio de un nuevo delegado: 11
+Inicio de un nuevo delegado: 13
+Inicio de un nuevo delegado: 5
+Inicio de un nuevo delegado: 12
+Inicio de un nuevo delegado: 9
+Inicio de un nuevo delegado: 15
+Inicio de un nuevo delegado: 6
+Inicio de un nuevo delegado: 1
+Inicio de un nuevo delegado: 3
+Delegado 10: Generar firma: 0.0578101  SEGUNDOS
+Delegado 5: Generar firma: 0.0523133  SEGUNDOS
+Delegado 3: Generar firma: 0.0550352  SEGUNDOS
+Delegado 2: Generar firma: 0.0377603  SEGUNDOS
+Delegado 14: Generar firma: 0.0400559  SEGUNDOS
+Delegado 0: Generar firma: 0.0510488  SEGUNDOS
+Delegado 15: Generar firma: 0.0320985  SEGUNDOS
+Delegado 13: Generar firma: 0.0304335  SEGUNDOS
+Delegado 11: Generar firma: 0.0465872  SEGUNDOS
+Delegado 12: Generar firma: 0.0478062  SEGUNDOS
+Delegado 1: Generar firma: 0.0419341  SEGUNDOS
+Delegado 7: Generar firma: 0.0362817  SEGUNDOS
+Delegado 9: Generar firma: 0.0508601  SEGUNDOS
+Delegado 4: Generar firma: 0.028104  SEGUNDOS
+Delegado 8: Generar firma: 0.0609763  SEGUNDOS
+Cliente 6: Verificacion de firma: 5.539E-4 SEGUNDOS
+Cliente 1: Verificacion de firma: 5.119E-4 SEGUNDOS
+Delegado 6: Generar firma: 0.0459235  SEGUNDOS
+Cliente 6: Calcular Gy: 0.0041174 SEGUNDOS
+Cliente 12: Verificacion de firma: 4.554E-4 SEGUNDOS
+Cliente 11: Verificacion de firma: 4.087E-4 SEGUNDOS
+Cliente 10: Verificacion de firma: 4.666E-4 SEGUNDOS
+Cliente 4: Verificacion de firma: 6.745E-4 SEGUNDOS
+Cliente 13: Verificacion de firma: 0.0020186 SEGUNDOS
+Cliente 2: Verificacion de firma: 7.253E-4 SEGUNDOS
+Cliente 0: Verificacion de firma: 4.31E-4 SEGUNDOS
+Cliente 14: Verificacion de firma: 7.664E-4 SEGUNDOS
+Cliente 5: Verificacion de firma: 0.0053572 SEGUNDOS
+Cliente 14: Calcular Gy: 0.0044942 SEGUNDOS
+Cliente 7: Verificacion de firma: 4.705E-4 SEGUNDOS
+Cliente 8: Verificacion de firma: 5.414E-4 SEGUNDOS
+Cliente 3: Verificacion de firma: 0.0012512 SEGUNDOS
+Cliente 15: Verificacion de firma: 0.0013906 SEGUNDOS
+Cliente 9: Verificacion de firma: 0.0013796 SEGUNDOS
+Cliente 0: Calcular Gy: 0.0040045 SEGUNDOS
+Cliente 2: Calcular Gy: 0.0049876 SEGUNDOS
+Cliente 15: Calcular Gy: 0.0040845 SEGUNDOS
+Cliente 9: Calcular Gy: 0.0041322 SEGUNDOS
+Cliente 13: Calcular Gy: 0.0045517 SEGUNDOS
+Cliente 10: Calcular Gy: 0.0046231 SEGUNDOS
+Cliente 4: Calcular Gy: 0.0042296 SEGUNDOS
+Cliente 1: Calcular Gy: 0.0069105 SEGUNDOS
+Cliente 8: Calcular Gy: 0.0195629 SEGUNDOS
+Cliente 11: Calcular Gy: 0.0043626 SEGUNDOS
+Cliente 12: Calcular Gy: 0.004357 SEGUNDOS
+Cliente 7: Calcular Gy: 0.0085802 SEGUNDOS
+Cliente 5: Calcular Gy: 0.0109767 SEGUNDOS
+Cliente 3: Calcular Gy: 0.0329217 SEGUNDOS
+Cliente 15: Cifrar consulta: 2.557E-4 SEGUNDOS
+Cliente 3: Cifrar consulta: 2.556E-4 SEGUNDOS
+Cliente 6: Cifrar consulta: 2.163E-4 SEGUNDOS
+Cliente 10: Cifrar consulta: 2.048E-4 SEGUNDOS
+Cliente 8: Cifrar consulta: 2.526E-4 SEGUNDOS
+Cliente 5: Cifrar consulta: 2.296E-4 SEGUNDOS
+Cliente 0: Cifrar consulta: 2.376E-4 SEGUNDOS
+Cliente 0: Generar HMAC: 9.22E-5 SEGUNDOS
+Cliente 14: Cifrar consulta: 4.105E-4 SEGUNDOS
+Cliente 9: Cifrar consulta: 0.0040856 SEGUNDOS
+Cliente 1: Cifrar consulta: 2.237E-4 SEGUNDOS
+Cliente 6: Generar HMAC: 0.0034896 SEGUNDOS
+Cliente 3: Generar HMAC: 0.0040385 SEGUNDOS
+Cliente 10: Generar HMAC: 0.0010095 SEGUNDOS
+Cliente 8: Generar HMAC: 6.312E-4 SEGUNDOS
+Delegado  11: Descifrar consulta: 1.826E-4SEGUNDOS
+Cliente 15: Generar HMAC: 0.0038429 SEGUNDOS
+Cliente 4: Cifrar consulta: 2.33E-4 SEGUNDOS
+Cliente 11: Cifrar consulta: 2.462E-4 SEGUNDOS
+Cliente 4: Generar HMAC: 1.624E-4 SEGUNDOS
+Cliente 13: Cifrar consulta: 2.159E-4 SEGUNDOS
+Cliente 12: Cifrar consulta: 2.281E-4 SEGUNDOS
+Delegado  9: Descifrar consulta: 1.868E-4SEGUNDOS
+Delegado  3: Descifrar consulta: 2.105E-4SEGUNDOS
+Cliente 11: Generar HMAC: 1.119E-4 SEGUNDOS
+Delegado  13: Descifrar consulta: 1.98E-4SEGUNDOS
+Delegado 11: Verificar HMAC: 2.399E-4 SEGUNDOS
+Delegado  15: Descifrar consulta: 1.826E-4SEGUNDOS
+Delegado  12: Descifrar consulta: 2.067E-4SEGUNDOS
+Delegado 15: Verificar HMAC: 2.489E-4 SEGUNDOS
+Cliente 1: Generar HMAC: 1.949E-4 SEGUNDOS
+Delegado 11: Consulta finalizada. Terminando conexión
+Delegado  10: Descifrar consulta: 2.287E-4SEGUNDOS
+Delegado 10: Verificar HMAC: 4.079E-4 SEGUNDOS
+Cliente 9: Generar HMAC: 2.736E-4 SEGUNDOS
+Delegado  1: Descifrar consulta: 2.309E-4SEGUNDOS
+Cliente 14: Generar HMAC: 2.325E-4 SEGUNDOS
+Delegado 1: Verificar HMAC: 4.016E-4 SEGUNDOS
+Cliente 2: Cifrar consulta: 2.062E-4 SEGUNDOS
+Delegado  6: Descifrar consulta: 1.899E-4SEGUNDOS
+Delegado 6: Verificar HMAC: 1.758E-4 SEGUNDOS
+Cliente 5: Generar HMAC: 7.232E-4 SEGUNDOS
+Cliente 7: Cifrar consulta: 2.07E-4 SEGUNDOS
+Delegado 1: Consulta finalizada. Terminando conexión
+Delegado  2: Descifrar consulta: 4.565E-4SEGUNDOS
+Cliente 2: Generar HMAC: 1.685E-4 SEGUNDOS
+Delegado 10: Consulta finalizada. Terminando conexión
+Delegado 15: Consulta finalizada. Terminando conexión
+Delegado 12: Verificar HMAC: 1.237E-4 SEGUNDOS
+Delegado  8: Descifrar consulta: 2.045E-4SEGUNDOS
+Delegado 13: Verificar HMAC: 1.396E-4 SEGUNDOS
+Delegado 3: Verificar HMAC: 9.538E-4 SEGUNDOS
+Delegado 12: Consulta finalizada. Terminando conexión
+Delegado 9: Verificar HMAC: 2.215E-4 SEGUNDOS
+Cliente 12: Generar HMAC: 1.001E-4 SEGUNDOS
+Cliente 13: Generar HMAC: 2.682E-4 SEGUNDOS
+Delegado 9: Consulta finalizada. Terminando conexión
+Delegado  4: Descifrar consulta: 2.01E-4SEGUNDOS
+Delegado 13: Consulta finalizada. Terminando conexión
+Delegado 3: Consulta finalizada. Terminando conexión
+Delegado 8: Verificar HMAC: 2.094E-4 SEGUNDOS
+Delegado  0: Descifrar consulta: 2.013E-4SEGUNDOS
+Delegado 2: Verificar HMAC: 2.336E-4 SEGUNDOS
+Delegado 6: Consulta finalizada. Terminando conexión
+Delegado  7: Descifrar consulta: 1.759E-4SEGUNDOS
+Cliente 7: Generar HMAC: 2.884E-4 SEGUNDOS
+Delegado 8: Consulta finalizada. Terminando conexión
+Delegado 7: Verificar HMAC: 1.357E-4 SEGUNDOS
+Delegado 0: Verificar HMAC: 1.811E-4 SEGUNDOS
+Delegado 4: Verificar HMAC: 2.711E-4 SEGUNDOS
+Delegado  5: Descifrar consulta: 1.925E-4SEGUNDOS
+Delegado 5: Verificar HMAC: 1.265E-4 SEGUNDOS
+Delegado  14: Descifrar consulta: 2.108E-4SEGUNDOS
+Delegado 2: Consulta finalizada. Terminando conexión
+Delegado 14: Verificar HMAC: 1.289E-4 SEGUNDOS
+Delegado 4: Consulta finalizada. Terminando conexión
+Delegado 0: Consulta finalizada. Terminando conexión
+Delegado 7: Consulta finalizada. Terminando conexión
+Delegado 5: Consulta finalizada. Terminando conexión
+Delegado 14: Consulta finalizada. Terminando conexión

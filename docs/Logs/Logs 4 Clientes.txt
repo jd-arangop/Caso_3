@@ -1,0 +1,42 @@
+Por favor, ingresa la cantidad de delegados deseados: 4
+Inicio del servidor prinicipal
+Cliente...
+Cliente...
+Cliente...
+Cliente...
+Inicio de un nuevo delegado: 2
+Inicio de un nuevo delegado: 0
+Inicio de un nuevo delegado: 1
+Inicio de un nuevo delegado: 3
+Delegado 3: Generar firma: 0.0173076  SEGUNDOS
+Delegado 2: Generar firma: 0.0173951  SEGUNDOS
+Delegado 0: Generar firma: 0.0173338  SEGUNDOS
+Delegado 1: Generar firma: 0.0174943  SEGUNDOS
+Cliente 0: Verificacion de firma: 0.0029057 SEGUNDOS
+Cliente 3: Verificacion de firma: 0.0011291 SEGUNDOS
+Cliente 1: Verificacion de firma: 0.001192 SEGUNDOS
+Cliente 2: Verificacion de firma: 0.0011845 SEGUNDOS
+Cliente 0: Calcular Gy: 0.0039934 SEGUNDOS
+Cliente 3: Calcular Gy: 0.003761 SEGUNDOS
+Cliente 1: Calcular Gy: 0.003966 SEGUNDOS
+Cliente 2: Calcular Gy: 0.0045772 SEGUNDOS
+Cliente 0: Cifrar consulta: 2.418E-4 SEGUNDOS
+Cliente 3: Cifrar consulta: 1.863E-4 SEGUNDOS
+Cliente 2: Cifrar consulta: 2.042E-4 SEGUNDOS
+Cliente 1: Cifrar consulta: 2.127E-4 SEGUNDOS
+Cliente 2: Generar HMAC: 0.002424 SEGUNDOS
+Cliente 0: Generar HMAC: 0.003103 SEGUNDOS
+Cliente 1: Generar HMAC: 0.0021595 SEGUNDOS
+Cliente 3: Generar HMAC: 0.0027332 SEGUNDOS
+Delegado  3: Descifrar consulta: 2.113E-4SEGUNDOS
+Delegado  1: Descifrar consulta: 2.315E-4SEGUNDOS
+Delegado  2: Descifrar consulta: 2.269E-4SEGUNDOS
+Delegado 1: Verificar HMAC: 2.08E-4 SEGUNDOS
+Delegado  0: Descifrar consulta: 4.186E-4SEGUNDOS
+Delegado 3: Verificar HMAC: 2.309E-4 SEGUNDOS
+Delegado 0: Verificar HMAC: 1.686E-4 SEGUNDOS
+Delegado 2: Verificar HMAC: 1.79E-4 SEGUNDOS
+Delegado 0: Consulta finalizada. Terminando conexión
+Delegado 1: Consulta finalizada. Terminando conexión
+Delegado 3: Consulta finalizada. Terminando conexión
+Delegado 2: Consulta finalizada. Terminando conexión

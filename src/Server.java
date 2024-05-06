@@ -22,6 +22,7 @@ public class Server extends Thread{
 
     ServerSocket serverSocket= null;
     boolean exceute = true;
+    int maxThreads;
     int threadsNumber = 0;
 
     public static BigInteger[] generary(){
@@ -43,12 +44,9 @@ public class Server extends Thread{
 
         return valores;
     }
-    
-    public static PublicKey getPublicKey(){
-        return publicKey;
-    }
 
-    public Server() throws IOException {
+    public Server(int pConexiones) throws IOException {
+        maxThreads = pConexiones;
         System.out.println("Inicio del servidor prinicipal");
 
         try {
@@ -68,9 +66,6 @@ public class Server extends Thread{
             privateKey = keyPair.getPrivate();
             publicKey = keyPair.getPublic();
 
-            System.out.println(privateKey);
-            System.out.println(Server.getPublicKey());
-
             ServerHandler.setKeys(privateKey, publicKey);
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,7 +75,7 @@ public class Server extends Thread{
     @Override
     public void run() {
         
-        while (exceute) {
+        while (threadsNumber < maxThreads) {
             Socket socket;
             try {
                 socket = serverSocket.accept();
@@ -89,6 +84,7 @@ public class Server extends Thread{
                 threadsNumber++;
 
                 serverHandler.start();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

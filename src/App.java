@@ -6,13 +6,13 @@ public class App {
         System.out.print("Por favor, ingresa la cantidad de delegados deseados: ");
         int delegados = scanner.nextInt();
 
-        Server server = new Server();
+        Server server = new Server(delegados);
         server.start();
 
         Client.publicKey = Server.publicKey;
 
         for (int i = 0; i < delegados; i++){
-            Client client = new Client(0);
+            Client client = new Client(i);
             client.start();
         }
         scanner.close();
