@@ -54,11 +54,15 @@ public class ClientProtocol {
             //Recibir Firma F(K_w-, (G,P,Gx))
             String firmaStr = pIn.readLine();
 
+            long iniciov = System.nanoTime();
             //Verificar Firma
             firma.initVerify(publicKey);
             firma.update((G.toString() + P.toString() + Gx.toString()).getBytes());
             verificado = firma.verify(Base64.getDecoder().decode(firmaStr));
-
+            long finv = System.nanoTime();
+            long tiempov = finv - iniciov;
+            double tiempovs = tiempov/1e9;
+            System.out.println("Cliente " + id + ": Verificacion de firma: " + tiempovs);
             if (verificado) {
                 pOut.println("OK");
             } else {
@@ -77,8 +81,12 @@ public class ClientProtocol {
             }
 
             //Calcula Gy = G^y mod P
+            long iniciogy = System.nanoTime();
             BigInteger Gy = G.modPow(y, P);
-
+            long fingy = System.nanoTime();
+            long tiempog = fingy - iniciogy;
+            double tiempogy = tiempog/1e9;
+            System.out.println("Cliente " + id + ": Calcular Gy: " + tiempogy);
             //Envia Gy
             pOut.println(Gy);
 
@@ -138,13 +146,22 @@ public class ClientProtocol {
                 System.out.println("Consulta " + consult);
 
                 //Cifra la consulta con AES
+                long inicioc = System.nanoTime();
                 byte[] encryptedConsultBytes = cipher.doFinal(consult.getBytes());
                 String encryptedConsult = Base64.getEncoder().encodeToString(encryptedConsultBytes);
-
+                long finc = System.nanoTime();
+                long tiempocc = finc - inicioc;
+                double tiempoc = tiempocc/1e9;
+                System.out.println("Cliente " + id + ": Cifrar consulta: " + tiempoc);
                 //Calcular HMAC de la consulta
+                long iniciohm = System.nanoTime();
                 Mac mac = Mac.getInstance("HmacSHA256");
                 mac.init(new SecretKeySpec(K_AB2, "HmacSHA256"));
                 byte[] hmac = mac.doFinal(consult.getBytes());
+                long finhm = System.nanoTime();
+                long tiempoh = finhm - iniciohm;
+                double tiempohm = tiempoh/1e9;
+                System.out.println("Cliente " + id + ": Generar HMAC: " + tiempohm);
 
                 //Enviar la consulta
                 pOut.println(encryptedConsult);
