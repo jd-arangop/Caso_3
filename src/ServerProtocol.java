@@ -68,7 +68,7 @@ public class ServerProtocol {
                         long finf = System.nanoTime();
                         long tiempoff = finf - iniciof;
                         double tiempof = tiempoff/1e9;
-                        System.out.println("Cliente " + id + ": Generar firma: " + tiempof);
+                        System.out.println("Cliente " + id + ": Generar firma: " + tiempof + "SEGUNDOS");
 
                         //Envia la firma al cliente
                         outputLine = new String(Base64.getEncoder().encode(sign));
@@ -204,7 +204,7 @@ public class ServerProtocol {
                     long finc = System.nanoTime();
                     long tiempocc = finc - inicioc;
                     double tiempoc = tiempocc/1e9;
-                    System.out.println("Cliente " + id + ": Descifrar consulta: " + tiempoc);
+                    System.out.println("Cliente " + id + ": Descifrar consulta: " + tiempoc + "SEGUNDOS");
 
                     //Verificar el HMAC
                     long iniciohm = System.nanoTime();
@@ -214,7 +214,7 @@ public class ServerProtocol {
                     long finhm = System.nanoTime();
                     long tiempohm = finhm - iniciohm;
                     double tiempoh = tiempohm/1e9;
-                    System.out.println("Cliente " + id + ": Verificar HMAC: " + tiempoh);
+                    System.out.println("Cliente " + id + ": Verificar HMAC: " + tiempoh + "SEGUNDOS");
 
                     if(MessageDigest.isEqual(hmacBytes, calculatedHmac)){
 

@@ -62,7 +62,7 @@ public class ClientProtocol {
             long finv = System.nanoTime();
             long tiempov = finv - iniciov;
             double tiempovs = tiempov/1e9;
-            System.out.println("Cliente " + id + ": Verificacion de firma: " + tiempovs);
+            System.out.println("Cliente " + id + ": Verificacion de firma: " + tiempovs + "SEGUNDOS");
             if (verificado) {
                 pOut.println("OK");
             } else {
@@ -86,7 +86,7 @@ public class ClientProtocol {
             long fingy = System.nanoTime();
             long tiempog = fingy - iniciogy;
             double tiempogy = tiempog/1e9;
-            System.out.println("Cliente " + id + ": Calcular Gy: " + tiempogy);
+            System.out.println("Cliente " + id + ": Calcular Gy: " + tiempogy + "SEGUNDOS");
             //Envia Gy
             pOut.println(Gy);
 
@@ -152,7 +152,7 @@ public class ClientProtocol {
                 long finc = System.nanoTime();
                 long tiempocc = finc - inicioc;
                 double tiempoc = tiempocc/1e9;
-                System.out.println("Cliente " + id + ": Cifrar consulta: " + tiempoc);
+                System.out.println("Cliente " + id + ": Cifrar consulta: " + tiempoc + "SEGUNDOS");
                 //Calcular HMAC de la consulta
                 long iniciohm = System.nanoTime();
                 Mac mac = Mac.getInstance("HmacSHA256");
@@ -161,7 +161,7 @@ public class ClientProtocol {
                 long finhm = System.nanoTime();
                 long tiempoh = finhm - iniciohm;
                 double tiempohm = tiempoh/1e9;
-                System.out.println("Cliente " + id + ": Generar HMAC: " + tiempohm);
+                System.out.println("Cliente " + id + ": Generar HMAC: " + tiempohm + "SEGUNDOS");
 
                 //Enviar la consulta
                 pOut.println(encryptedConsult);
